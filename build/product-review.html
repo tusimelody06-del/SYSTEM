@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Product Reviews</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="back" onclick="history.back()">← Back</button>
+    <h1 id="pageTitle">Product</h1>
+  </header>
+
+  <main class="wrap review-layout">
+    <section class="summary-card">
+      <div class="summary-left">
+        <div class="big-score" id="avgScore">0.0</div>
+        <div class="muted">Overall rating</div>
+        <div class="small muted" id="totalReviews">0 reviews</div>
+      </div>
+
+      <div class="summary-right">
+        <div class="breakdown" id="breakdownBars">
+          <!-- dynamic bars -->
+        </div>
+      </div>
+    </section>
+
+    <section class="main-column">
+      <div class="product-top">
+        <img id="productImage" src="" alt="" class="product-thumb">
+        <div>
+          <h2 id="productName"></h2>
+          <div id="starsInteractive" class="stars-interactive"></div>
+          <div class="muted small">Click to choose rating</div>
+        </div>
+      </div>
+
+      <div class="review-box">
+        <textarea id="reviewText" placeholder="Write your review here..."></textarea>
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <button class="cta" id="submitReview">Submit Review</button>
+          <button class="outline" id="clearStorage">Clear (dev)</button>
+        </div>
+      </div>
+
+      <div class="helpful-card" id="mostHelpful" style="display:none;">
+        <h3>Most helpful review</h3>
+        <div id="helpfulContent"></div>
+      </div>
+
+      <div class="reviews-list" id="reviewsList">
+        <!-- reviews appended here -->
+      </div>
+
+      <div style="text-align:center; margin-top:12px;">
+        <button class="view-more" id="loadMoreBtn">Load more</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    // Initialize page with product param
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(location.search);
+      const product = params.get('product') || 'Sneakers';
+      initProductPage(product);
+    });
+  </script>
+</body>
+</html>

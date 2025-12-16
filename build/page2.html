@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product View Page</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: orange;
+    margin: 0;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 950px;
+    margin: auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.25);
+  }
+
+  .back-btn {
+    margin-bottom: 20px;
+    display: inline-block;
+    color: white;
+    background: #d16a00;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .back-btn:hover {
+    background: #b84300;
+  }
+
+  .product-header {
+    text-align: center;
+  }
+
+  .product-header a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .main-img {
+    width: 290px;
+    height: 290px;
+    border-radius: 12px;
+    border: 4px solid orange;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  .thumbnails {
+    margin-top: 10px;
+  }
+
+  .thumb {
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    border: 3px solid transparent;
+    object-fit: cover;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .thumb:hover {
+    border-color: orange;
+  }
+
+  .product-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+
+  .price {
+    font-size: 22px;
+    font-weight: bold;
+    color: #444;
+  }
+
+  .rating-stars {
+    font-size: 35px;
+    color: orange;
+    cursor: pointer;
+  }
+
+  hr {
+    margin: 25px 0;
+  }
+
+  .controls {
+    margin-bottom: 15px;
+  }
+
+  select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid orange;
+  }
+
+  .review-card {
+    padding: 15px;
+    background: #fff7e6;
+    border-radius: 10px;
+    border-left: 6px solid orange;
+    margin-top: 12px;
+  }
+
+  .review-name { font-weight: bold; }
+
+  .helpful {
+    margin-top: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #e67e00;
+  }
+
+  .review-box {
+    text-align: center;
+    margin-top: 25px;
+  }
+
+  textarea {
+    width: 90%;
+    height: 150px;
+    resize: none;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #ffb74d;
+    font-size: 16px;
+  }
+
+  button {
+    background: orange;
+    color: white;
+    padding: 12px 25px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    margin-top: 12px;
+  }
+
+  button:hover {
+    background: #ff9800;
+  }
+</style>
+</head>
+<body>
+
+<a href="#" class="back-btn" id="backBtn">⬅ Back to Products</a>
+
+<div class="container">
+
+ 
+      <div class="product-header">  
+    <img id="mainImage" class="main-img" src="C:\Users\Janice\OneDrive\Pictures\39254397-6231-4f41-8420-1807186d1a26.jpg">  <div class="thumbnails">  
+  <img class="thumb" src="C:\Users\Janice\OneDrive\Pictures\359a92d7-de9e-4245-bc27-31defd167a06.jpg" onclick="changeImage(this.src)">  
+  <img class="thumb" src="C:\Users\Janice\OneDrive\Pictures\df248364-538f-4e4e-b2f9-8c1bbbf39474.jpg" onclick="changeImage(this.src)">  
+  <img class="thumb" src="C:\Users\Janice\OneDrive\Pictures\e54bbf64-af8b-4f60-840f-6a5efc603fb8.jpg" onclick="changeImage(this.src)">  
+</div>  
+
+<div class="product-title">Premium Stainless Steel Tumbler</div>  
+<div class="price">₱699</div>  
+<div id="starSelect" class="rating-stars">  
+  ★★★★★  
+</div>
+  </div>
+
+  <hr>
+
+  <div class="controls">
+    <label><b>Sort reviews:</b></label>
+    <select id="sortOption" onchange="sortReviews()">
+      <option value="latest">Latest</option>
+      <option value="oldest">Oldest</option>
+      <option value="high">Highest Star</option>
+      <option value="low">Lowest Star</option>
+    </select>
+  </div>
+
+ 
+  <div id="reviewList"></div>
+
+  <div class="review-box">
+    <h3>Write Your Review</h3>
+
+    <div id="userStarSelect" class="rating-stars">★★★★★</div>
+
+    <textarea id="userReview" placeholder="Type your review here..."></textarea><br>
+    <button onclick="submitReview()">Submit Review</button>
+  </div>
+
+</div>
+
+<script>
+ 
+  document.getElementById("backBtn").addEventListener("click", function(e){
+    e.preventDefault();
+    window.location.href = "index.html";
+  });
+
+  
+  function changeImage(src) {
+    document.getElementById("mainImage").src = src;
+  }
+
+  
+  let userStars = 5;
+  document.getElementById("userStarSelect").addEventListener("click", function(e) {
+    const stars = e.target.innerText === "★" ? [...this.innerText].indexOf("★")+1 : userStars;
+    userStars = stars;
+    this.innerHTML = "★★★★★".slice(0,userStars) + "☆☆☆☆☆".slice(0,5-userStars);
+  });
+
+ 
+  let reviews = [
+    { name: "Sophia Reyes", text: "8 hours cold pa rin! Super nice quality!", stars: 5, helpful: 3, time: Date.now()-5000 },
+    { name: "Mark Dela Cruz", text: "Good design but sana may XL size.", stars: 4, helpful: 1, time: Date.now()-10000 },
+    { name: "Liza Menez", text: "Fast delivery. Worth it.", stars: 5, helpful: 4, time: Date.now()-15000 }
+  ];
+
+  function displayReviews() {
+    const list = document.getElementById("reviewList");
+    list.innerHTML = "";
+
+    reviews.forEach((r, index) => {
+      const card = document.createElement("div");
+      card.className = "review-card";
+      card.innerHTML = `
+        <div class="review-name">${r.name}</div>
+        ${"★".repeat(r.stars)}${"☆".repeat(5 - r.stars)}
+        <p>${r.text}</p>
+        <div class="helpful" onclick="addHelpful(${index})">
+          👍 Helpful (${r.helpful})
+        </div>
+      `;
+      list.appendChild(card);
+    });
+  }
+
+  displayReviews();
+
+  function addHelpful(i) {
+    reviews[i].helpful++;
+    displayReviews();
+  }
+
+ 
+  function submitReview() {
+    const text = document.getElementById("userReview").value;
+    if(text.trim()==="") return alert("Please write a review first!");
+    document.getElementById("reviewForm").addEventListener("submit", function(event){
+  event.preventDefault(); // para hindi mag-reload ang page
+  // dito pwedeng ilagay validation kung gusto
+  window.location.href = "page3.html"; // redirect to Page 3
+
+    });
+    document.getElementById("userReview").value="";
+    displayReviews();
+  }
+
+  function sortReviews() {
+    const opt = document.getElementById("sortOption").value;
+    if(opt==="latest") reviews.sort((a,b)=> b.time - a.time);
+    if(opt==="oldest") reviews.sort((a,b)=> a.time - b.time);
+    if(opt==="high") reviews.sort((a,b)=> b.stars - a.stars);
+    if(opt==="low") reviews.sort((a,b)=> a.stars - b.stars);
+    displayReviews();
+  }
+
+</script>
+<script>
+
+</script>
+</body>
+</html>
