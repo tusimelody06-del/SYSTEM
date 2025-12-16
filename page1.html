@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Review</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #ebe8e3;
+      padding: 30px;
+      font-family: Arial, sans-serif;
+    }
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    h1 {
+      color: rgb(231, 135, 10);
+      font-weight: bold;
+      margin: 0;
+    }
+    .card {
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .card img {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .stars .star {
+      font-size: 22px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .stars .star.hover,
+    .stars .star.selected {
+      color: #FFA500;
+    }
+
+    .btn-view {
+      background-color: #d35400;
+      color: white;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-view:hover {
+      background-color: #b84300;
+    }
+
+    .search-input {
+      width: 250px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+   
+    <div class="header-row">
+      <h1>Product Review</h1>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2 search-input" type="search" placeholder="Search product..." aria-label="Search" id="searchInput">
+        <button class="btn btn-outline-warning" type="button" id="searchBtn">Search</button>
+      </form>
+    </div>
+
+    <div class="row" id="productGrid">
+
+      <div class="col-md-3 mb-4 product-card" data-name="Premium Stainless Steel Tumbler">
+        <div class="card h-100">
+          <img src="C:\Users\Janice\OneDrive\Pictures\39254397-6231-4f41-8420-1807186d1a26.jpg" class="card-img-top" alt="HydroFlask Tumbler">
+          <div class="card-body text-center">
+            <h5 class="card-title">Premium Stainless Steel Tumbler</h5>
+            <p class="text-danger fw-bold">₱699</p>
+            <div class="stars" data-product="HydroFlask Tumbler">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <p>15 Reviews</p>
+           <a href="page2.html" class="btn btn-view w-100">View / Review</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4 product-card" data-name="Sneakers">
+        <div class="card h-100">
+          <img src="C:\Users\Janice\OneDrive\Pictures\Camera Roll\Mens_FW25_CasualSneakers.jpg" class="card-img-top" alt="Sneakers">
+          <div class="card-body text-center">
+            <h5 class="card-title">Sneakers</h5>
+            <p class="text-danger fw-bold">₱520</p>
+            <div class="stars" data-product="Sneakers">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <p>20 Reviews</p>
+            <a href="page2.html" class="btn btn-view w-100">View / Review</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 product-card" data-name="Shirt">
+        <div class="card h-100">
+          <img src="C:\Users\Janice\OneDrive\Pictures\Camera Roll\Lounge_Terry_Loop_Crop_Top_Grey_HZ1606_01_laydown.jpg" class="card-img-top" alt="Shirt">
+          <div class="card-body text-center">
+            <h5 class="card-title">Shirt</h5>
+            <p class="text-danger fw-bold">₱350</p>
+            <div class="stars" data-product="Shirt">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <p>18 Reviews</p>
+            <a href="page2.html" class="btn btn-view w-100">View / Review</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 product-card" data-name="Winter Pants">
+        <div class="card h-100">
+          <img src="C:\Users\Janice\OneDrive\Pictures\Camera Roll\ssph.zone-1736470609-RMBCCGH24_103A_-_170382_DARK_GRAY_2000x.jpg" class="card-img-top" alt="Winter Pants">
+          <div class="card-body text-center">
+            <h5 class="card-title">Winter Pants</h5>
+            <p class="text-danger fw-bold">₱800</p>
+            <div class="stars" data-product="Winter Pants">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <p>10 Reviews</p>
+            <a href="page2.html" class="btn btn-view w-100">View / Review</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 product-card" data-name="Fashionable Sunglasses">
+        <div class="card h-100">
+          <img src="C:\Users\Janice\OneDrive\Pictures\Camera Roll\1504-1.jpg" class="card-img-top" alt="Sunglasses">
+          <div class="card-body text-center">
+            <h5 class="card-title">Fashionable Sunglasses</h5>
+            <p class="text-danger fw-bold">₱520</p>
+            <div class="stars" data-product="Fashionable Sunglasses">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <p>15 Reviews</p>
+           <a href="page2.html" class="btn btn-view w-100">View / Review</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 product-card" data-name="Backpack">
+        <div class="card h-100">
+          <img src="C:\Users\Janice\OneDrive\Pictures\f8495b51-7c17-4204-a1c0-74633f3236e2.jpg" class="card-img-top" alt="Backpack">
+          <div class="card-body text-center">
+            <h5 class="card-title">Backpack</h5>
+            <p class="text-danger fw-bold">₱450</p>
+            <div class="stars" data-product="Backpack">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <p>12 Reviews</p>
+            <a href="page2.html" class="btn btn-view w-100">View / Review</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 product-card" data-name="FlatScreen TV">
+        <div class="card h-100">
+          <img src="C:\Users\Janice\OneDrive\Pictures\53da2bd5-51c7-436a-9a61-e4ea839ffa1c.jpg" class="card-img-top" alt="TV">
+          <div class="card-body text-center">
+            <h5 class="card-title">FlatScreen TV</h5>
+            <p class="text-danger fw-bold">₱10,999</p>
+            <div class="stars" data-product="FlatScreen TV">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <p>8 Reviews</p>
+            <a href="page2.html" class="btn btn-view w-100">View / Review</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 product-card" data-name="HeadPhone">
+        <div class="card h-100">
+          <img src="C:\Users\Janice\OneDrive\Pictures\211ec9b4-ef16-494c-ab86-c51d6e6fb6ee.jpg" class="card-img-top" alt="HeadPhone">
+          <div class="card-body text-center">
+            <h5 class="card-title">HeadPhone</h5>
+            <p class="text-danger fw-bold">₱350</p>
+            <div class="stars" data-product="HeadPhone">
+              <span class="star" data-value="1">&#9733;</span>
+              <span class="star" data-value="2">&#9733;</span>
+              <span class="star" data-value="3">&#9733;</span>
+              <span class="star" data-value="4">&#9733;</span>
+              <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <p>25 Reviews</p>
+            <a href="page2.html" class="btn btn-view w-100">View / Review</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const ratings = {};
+    document.querySelectorAll('.stars').forEach(starContainer => {
+      const stars = starContainer.querySelectorAll('.star');
+      const productName = starContainer.dataset.product;
+
+      stars.forEach(star => {
+        star.addEventListener('mouseover', () => {
+          const value = parseInt(star.getAttribute('data-value'));
+          stars.forEach(s => s.classList.toggle('hover', parseInt(s.getAttribute('data-value')) <= value));
+        });
+
+        star.addEventListener('mouseout', () => {
+          stars.forEach(s => s.classList.remove('hover'));
+        });
+
+        star.addEventListener('click', () => {
+          const value = parseInt(star.getAttribute('data-value'));
+          stars.forEach(s => s.classList.toggle('selected', parseInt(s.getAttribute('data-value')) <= value));
+          ratings[productName] = value;
+          console.logRated$ ({value},starsfor$ ({productName}))
+        });
+      });
+    });
+    const searchInput = document.getElementById('searchInput');
+    const productGrid = document.getElementById('productGrid');
+
+    document.getElementById('searchBtn').addEventListener('click', () => {
+      const filter = searchInput.value.toLowerCase();
+      document.querySelectorAll('.product-card').forEach(card => {
+        const name = card.dataset.name.toLowerCase();
+        card.style.display = name.includes(filter) ? '' : 'none';
+      });
+    });
+
+document.querySelectorAll(".product-card").forEach(card => {
+  card.addEventListener("click", function(e) {
+    if (e.target.classList.contains("star")) return;
+    window.location.href = "page2.html";
+  });
+});
+
+  </script>
+
+</body>
+</html>
